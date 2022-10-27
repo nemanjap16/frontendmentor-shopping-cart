@@ -1,8 +1,20 @@
+import Header from './components/Header'
+import { BucketProvider } from './context/bucketContext'
+
 function App() {
+  const navLinks = [
+    { id: 1, name: 'collections' },
+    { id: 2, name: 'men' },
+    { id: 3, name: 'women' },
+    { id: 4, name: 'contact' },
+  ]
+
   return (
-    <div className='container text-center '>
-      <h1 className='font-thin-400 text-paragraph font-kumbh'>Hello world!</h1>
-    </div>
+    <BucketProvider>
+      <div className='container bg-white'>
+        <Header links={navLinks} />
+      </div>
+    </BucketProvider>
   )
 }
 

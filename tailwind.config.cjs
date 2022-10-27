@@ -11,6 +11,7 @@ module.exports = {
         center: true,
         padding: {
           DEFAULT: '1rem',
+          xl: '2rem',
         },
       },
       colors: {
