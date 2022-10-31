@@ -10,6 +10,22 @@ export const BucketIcon = () => {
   )
 }
 
+type Color = {
+  color: string
+}
+
+export const CartIcon = ({ color }: Color) => {
+  return (
+    <svg width='22' height='20' xmlns='http://www.w3.org/2000/svg'>
+      <path
+        d='M20.925 3.641H3.863L3.61.816A.896.896 0 0 0 2.717 0H.897a.896.896 0 1 0 0 1.792h1l1.031 11.483c.073.828.52 1.726 1.291 2.336C2.83 17.385 4.099 20 6.359 20c1.875 0 3.197-1.87 2.554-3.642h4.905c-.642 1.77.677 3.642 2.555 3.642a2.72 2.72 0 0 0 2.717-2.717 2.72 2.72 0 0 0-2.717-2.717H6.365c-.681 0-1.274-.41-1.53-1.009l14.321-.842a.896.896 0 0 0 .817-.677l1.821-7.283a.897.897 0 0 0-.87-1.114ZM6.358 18.208a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm10.015 0a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm2.021-7.243-13.8.81-.57-6.341h15.753l-1.383 5.53Z'
+        fill={color}
+        fillRule='nonzero'
+      />
+    </svg>
+  )
+}
+
 export const CloseIcon = () => {
   return (
     <svg width='14' height='15' xmlns='http://www.w3.org/2000/svg'>
@@ -50,14 +66,58 @@ export const MenuIcon = () => {
 
 export const MinusIcon = () => {
   return (
-    <svg width='12' height='4' xmlns='http://www.w3.org/2000/svg'>
-      <defs>
-        <path
-          d='M11.357 3.332A.641.641 0 0 0 12 2.69V.643A.641.641 0 0 0 11.357 0H.643A.641.641 0 0 0 0 .643v2.046c0 .357.287.643.643.643h10.714Z'
-          id='a'
-        />
-      </defs>
-      <use fill='#FF7E1B' fillRule='nonzero' />
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      viewBox='0 0 20 20'
+      fill='currentColor'
+      className='h-5 w-5'
+    >
+      <path
+        fillRule='evenodd'
+        d='M3 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H3.75A.75.75 0 013 10z'
+        clipRule='evenodd'
+      />
+    </svg>
+  )
+}
+
+export const PlusIcon = () => {
+  return (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      viewBox='0 0 20 20'
+      fill='currentColor'
+      className='h-5 w-5'
+    >
+      <path d='M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z' />
+    </svg>
+  )
+}
+
+export const NextIcon = () => {
+  return (
+    <svg width='13' height='18' xmlns='http://www.w3.org/2000/svg'>
+      <path
+        d='m2 1 8 8-8 8'
+        stroke='#1D2026'
+        strokeWidth='3'
+        fill='none'
+        fillRule='evenodd'
+      />
+    </svg>
+  )
+}
+
+export const PreviousIcon = () => {
+  return (
+    <svg width='13' height='18' xmlns='http://www.w3.org/2000/svg'>
+      <path
+        d='M11 1 3 9l8 8'
+        stroke='#1D2026'
+        strokeWidth='3'
+        fill='none'
+        fillRule='evenodd'
+      />
     </svg>
   )
 }

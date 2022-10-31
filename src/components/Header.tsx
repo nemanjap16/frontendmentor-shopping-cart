@@ -10,8 +10,8 @@ type navProps = {
 
 const Header = ({ links }: navProps) => {
   return (
-    <header className='border-b-2 border-solid border-b-lightGrayish'>
-      <nav className='flex items-baseline pt-5'>
+    <header className='border-collapse lg:border-b-2 lg:border-solid lg:border-b-lightGrayish'>
+      <nav className='flex items-baseline pt-5 pb-2 lg:pb-0'>
         <button className='mr-5 sm:hidden'>
           <MenuIcon />
         </button>

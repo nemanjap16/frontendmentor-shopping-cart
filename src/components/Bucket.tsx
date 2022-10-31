@@ -22,7 +22,20 @@ const Bucket = () => {
           aria-label='display shopping cart'
           className='cursor-pointer rounded-full border-4 border-transparent transition duration-300 ease-in-out hover:border-orange'
         >
-          <img src={avatar} alt='avatar' height={50} width={50} />
+          <img
+            className='hidden lg:block'
+            src={avatar}
+            alt='avatar'
+            height={50}
+            width={50}
+          />
+          <img
+            className='lg:hidden'
+            src={avatar}
+            alt='avatar'
+            height={25}
+            width={25}
+          />
         </button>
       </div>
       <Cart />
