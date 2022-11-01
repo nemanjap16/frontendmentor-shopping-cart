@@ -13,7 +13,7 @@ function App() {
 
   return (
     <BucketProvider>
-      <div className='container bg-white'>
+      <div className='container bg-white pb-10'>
         <Header links={navLinks} />
         <main>
           <Product />

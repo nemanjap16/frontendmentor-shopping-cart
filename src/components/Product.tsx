@@ -1,22 +1,27 @@
-import product from '../assets/images/image-product-1.jpg'
+import productImg1 from '../assets/images/image-product-1.jpg'
+import productImg2 from '../assets/images/image-product-2.jpg'
+import productImg3 from '../assets/images/image-product-3.jpg'
+import productImg4 from '../assets/images/image-product-4.jpg'
 import product1thumbnail from '../assets/images/image-product-1-thumbnail.jpg'
 import product2thumbnail from '../assets/images/image-product-2-thumbnail.jpg'
 import product3thumbnail from '../assets/images/image-product-3-thumbnail.jpg'
 import product4thumbnail from '../assets/images/image-product-4-thumbnail.jpg'
-import {
-  CartIcon,
-  MinusIcon,
-  NextIcon,
-  PlusIcon,
-  PreviousIcon
-} from '../assets/icons/Icons'
+import { CartIcon, MinusIcon, PlusIcon } from '../assets/icons/Icons'
+import Carousel from './Carousel'
+
+const slides = [
+  { url: productImg1, title: 'product slide 1' },
+  { url: productImg2, title: 'product slide 2' },
+  { url: productImg3, title: 'product slide 3' },
+  { url: productImg4, title: 'product slide 4' }
+]
 
 const Product = () => {
   return (
     <section className='flex flex-col items-center gap-6 lg:gap-16 lg:p-16 xl:flex-row'>
       <div className='hidden w-[40%] lg:block'>
         <figure className='flex w-fit flex-col gap-4 overflow-hidden'>
-          <img className='rounded-2xl' src={product} alt='product' />
+          <img className='rounded-2xl' src={productImg1} alt='product' />
           <figcaption className='flex justify-between'>
             <img
               className='cursor-pointer rounded-2xl hover:opacity-70'
@@ -47,23 +52,9 @@ const Product = () => {
       </div>
       {/* on mobile */}
       <div className='lg:hidden'>
-        <figure className='relative'>
-          <div className='absolute flex h-full w-full items-center justify-between px-4'>
-            <button
-              aria-label='Previous'
-              className='grid h-9 w-9 place-content-center rounded-full bg-white'
-            >
-              <PreviousIcon />
-            </button>
-            <button
-              aria-label='Next'
-              className='grid h-9 w-9 place-content-center rounded-full bg-white'
-            >
-              <NextIcon />
-            </button>
-          </div>
-          <img src={product} alt='product' />
-        </figure>
+        <div className='w-full overflow-hidden'>
+          <Carousel slides={slides} width={'100%'} />
+        </div>
       </div>
       <aside className='flex w-full flex-col lg:w-1/3'>
         <h4 className='text-sm font-bold uppercase tracking-wide text-orange'>
