@@ -1,7 +1,8 @@
 import { createContext, useContext, useReducer } from 'react'
 
 type BucketState = {
-  isOpen: boolean
+  isOpenMenu: boolean
+  isOpenCart: boolean
   items: any
   amount: number
   total: number
@@ -9,7 +10,7 @@ type BucketState = {
 }
 
 type BucketAction = {
-  type: 'INCREMENT' | 'DECREMENT' | 'REMOVE_ITEM' | 'TOGGLE_NAV'
+  type: 'INCREMENT' | 'DECREMENT' | 'REMOVE_ITEM' | 'TOGGLE_NAV' | 'TOGGLE_CART'
   payload?: any
 }
 
@@ -19,7 +20,8 @@ type BucketContextProviderProps = {
 
 type BucketContextType = {
   dispatch: React.Dispatch<BucketAction>
-  isOpen: boolean
+  isOpenMenu: boolean
+  isOpenCart: boolean
   items: number
   amount: number
   total: number
@@ -29,7 +31,8 @@ type BucketContextType = {
 export const BucketContext = createContext({} as BucketContextType)
 
 const initialState = {
-  isOpen: false,
+  isOpenMenu: false,
+  isOpenCart: false,
   items: 0,
   amount: 0,
   total: 0,
@@ -39,7 +42,10 @@ const initialState = {
 export const bucketReducer = (state: BucketState, action: BucketAction) => {
   switch (action.type) {
     case 'TOGGLE_NAV':
-      return { ...state, isOpen: !state.isOpen }
+      return { ...state, isOpenMenu: !state.isOpenMenu }
+
+    case 'TOGGLE_CART':
+      return { ...state, isOpenCart: !state.isOpenCart }
 
     case 'INCREMENT':
       return { ...state, items: action.payload }

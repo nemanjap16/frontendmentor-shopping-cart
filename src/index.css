@@ -4,7 +4,9 @@
 
 @layer base {
   body {
+    min-height: 100vh;
     line-height: 1.5;
+    position: relative;
   }
 
   button:focus > img {

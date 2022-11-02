@@ -7,23 +7,23 @@ type propLinks = {
 }
 
 const NavSlider = ({ links }: propLinks) => {
-  const { dispatch, isOpen } = useBucketContext()
-  const handleMenu = () => {
-    return dispatch({ type: 'TOGGLE_NAV' })
-  }
+  const { dispatch, isOpenMenu } = useBucketContext()
 
   return (
-    <div>
-      {isOpen && (
+    <>
+      {isOpenMenu && (
         <div className='absolute inset-0 z-50 bg-lightbox'>
-          <nav className='h-full w-3/5 bg-white p-5 text-veryDarkBlue'>
-            <button aria-label='Close mobile menu' onClick={handleMenu}>
+          <nav className='h-full w-3/5 origin-left animate-nav bg-white p-5 text-veryDarkBlue'>
+            <button
+              aria-label='Close mobile menu'
+              onClick={() => dispatch({ type: 'TOGGLE_NAV' })}
+            >
               <CloseIcon />
             </button>
             <ul
               className='mt-20 flex flex-col gap-4 font-bold'
               aria-label='Menu list'
-              onClick={handleMenu}
+              onClick={() => dispatch({ type: 'TOGGLE_NAV' })}
             >
               {links.map((el) => (
                 <li key={el.id}>
@@ -36,7 +36,7 @@ const NavSlider = ({ links }: propLinks) => {
           </nav>
         </div>
       )}
-    </div>
+    </>
   )
 }
 
