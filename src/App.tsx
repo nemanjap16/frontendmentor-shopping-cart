@@ -1,6 +1,7 @@
 import Product from './components/Product'
 import Header from './components/Header'
 import { BucketProvider } from './context/bucketContext'
+import NavSlider from './components/NavSlider'
 
 function App() {
   const navLinks = [
@@ -19,6 +20,7 @@ function App() {
           <Product />
         </main>
       </div>
+      <NavSlider links={navLinks} />
     </BucketProvider>
   )
 }

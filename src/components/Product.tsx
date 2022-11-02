@@ -2,12 +2,10 @@ import productImg1 from '../assets/images/image-product-1.jpg'
 import productImg2 from '../assets/images/image-product-2.jpg'
 import productImg3 from '../assets/images/image-product-3.jpg'
 import productImg4 from '../assets/images/image-product-4.jpg'
-import product1thumbnail from '../assets/images/image-product-1-thumbnail.jpg'
-import product2thumbnail from '../assets/images/image-product-2-thumbnail.jpg'
-import product3thumbnail from '../assets/images/image-product-3-thumbnail.jpg'
-import product4thumbnail from '../assets/images/image-product-4-thumbnail.jpg'
+
 import { CartIcon, MinusIcon, PlusIcon } from '../assets/icons/Icons'
 import Carousel from './Carousel'
+import { useState } from 'react'
 
 const slides = [
   { url: productImg1, title: 'product slide 1' },
@@ -17,36 +15,29 @@ const slides = [
 ]
 
 const Product = () => {
+  const [img, setImg] = useState(productImg1)
+
   return (
     <section className='flex flex-col items-center gap-6 lg:gap-16 lg:p-16 xl:flex-row'>
       <div className='hidden w-[40%] lg:block'>
-        <figure className='flex w-fit flex-col gap-4 overflow-hidden'>
-          <img className='rounded-2xl' src={productImg1} alt='product' />
+        <figure className='flex w-fit flex-col gap-4'>
+          <img className='rounded-2xl' src={img} alt='product' />
           <figcaption className='flex justify-between'>
-            <img
-              className='cursor-pointer rounded-2xl hover:opacity-70'
-              src={product1thumbnail}
-              alt='product-1-thumbnail'
-              width={100}
-            />
-            <img
-              className='cursor-pointer rounded-2xl hover:opacity-70'
-              src={product2thumbnail}
-              alt='product-2-thumbnail'
-              width={100}
-            />
-            <img
-              className='cursor-pointer rounded-2xl hover:opacity-70'
-              src={product3thumbnail}
-              alt='product-3-thumbnail'
-              width={100}
-            />
-            <img
-              className='cursor-pointer rounded-2xl hover:opacity-70'
-              src={product4thumbnail}
-              alt='product-4-thumbnail'
-              width={100}
-            />
+            {slides.map((el) => (
+              <button
+                className='rounded-2xl focus:outline-none focus:ring-4 focus:ring-orange'
+                aria-label='Select product'
+                key={el.title}
+                onClick={() => setImg(el.url)}
+              >
+                <img
+                  className='cursor-pointer rounded-2xl object-cover hover:opacity-70'
+                  src={el.url}
+                  alt='product-1-thumbnail'
+                  width={100}
+                />
+              </button>
+            ))}
           </figcaption>
         </figure>
       </div>
@@ -94,10 +85,7 @@ const Product = () => {
               <PlusIcon />
             </button>
           </div>
-          <button
-            aria-label='add to cart'
-            className='flex w-full items-center justify-center gap-5 rounded-md bg-orange p-3 font-bold text-lightGrayish lg:w-[300px]'
-          >
+          <button aria-label='Add to cart' className='btn-add'>
             <span>
               <CartIcon color={'hsl(25, 100%, 94%)'} />
             </span>

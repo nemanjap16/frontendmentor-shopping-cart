@@ -50,9 +50,20 @@ module.exports = {
           '100%': { transform: 'rotate(0deg)' }
         }
       },
+      nav: {
+        from: {
+          opacity: 0,
+          transform: 'translateX(-50px)'
+        },
+        to: {
+          opacity: 1,
+          transform: 'translateX(0)'
+        }
+      },
       animation: {
         'display-cart': 'display-cart 0.5s ease-in-out',
-        wiggle: 'wiggle 1s ease-in-out'
+        wiggle: 'wiggle 1s ease-in-out',
+        nav: 'nav 1s ease 0s 1 normal forwards'
       }
     }
   },
