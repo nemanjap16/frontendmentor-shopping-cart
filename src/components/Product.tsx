@@ -1,39 +1,30 @@
-import productImg1 from '../assets/images/image-product-1.jpg'
-import productImg2 from '../assets/images/image-product-2.jpg'
-import productImg3 from '../assets/images/image-product-3.jpg'
-import productImg4 from '../assets/images/image-product-4.jpg'
-
 import { CartIcon, MinusIcon, PlusIcon } from '../assets/icons/Icons'
 import Carousel from './Carousel'
-import { useState } from 'react'
-
-const slides = [
-  { url: productImg1, title: 'product slide 1' },
-  { url: productImg2, title: 'product slide 2' },
-  { url: productImg3, title: 'product slide 3' },
-  { url: productImg4, title: 'product slide 4' }
-]
+import { useBucketContext } from '../context/bucketContext'
 
 const Product = () => {
-  const [img, setImg] = useState(productImg1)
+  const { dispatch, items } = useBucketContext()
 
   return (
     <section className='flex flex-col items-center gap-6 lg:gap-16 lg:p-16 xl:flex-row'>
       <div className='hidden w-[40%] lg:block'>
         <figure className='flex w-fit flex-col gap-4'>
-          <img className='rounded-2xl' src={img} alt='product' />
+          <img className='rounded-2xl' src={items[0].url} alt='product' />
           <figcaption className='flex justify-between'>
-            {slides.map((el) => (
+            {items.map((el, i) => (
               <button
                 className='rounded-2xl focus:outline-none focus:ring-4 focus:ring-orange'
                 aria-label='Select product'
                 key={el.title}
-                onClick={() => setImg(el.url)}
+                onClick={() => [
+                  dispatch({ type: 'SET_URL', payload: el.url }),
+                  dispatch({ type: 'TOGGLE_MODAL' })
+                ]}
               >
                 <img
                   className='cursor-pointer rounded-2xl object-cover hover:opacity-70'
                   src={el.url}
-                  alt='product-1-thumbnail'
+                  alt={el.title}
                   width={100}
                 />
               </button>
@@ -44,7 +35,7 @@ const Product = () => {
       {/* on mobile */}
       <div className='lg:hidden'>
         <div className='w-full overflow-hidden'>
-          <Carousel slides={slides} width={'100%'} />
+          <Carousel slides={items} width={'100%'} />
         </div>
       </div>
       <aside className='flex w-full flex-col lg:w-1/3'>

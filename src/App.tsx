@@ -2,6 +2,7 @@ import Product from './components/Product'
 import Header from './components/Header'
 import { BucketProvider } from './context/bucketContext'
 import NavSlider from './components/NavSlider'
+import { Modal } from './components/Modal'
 
 function App() {
   const navLinks = [
@@ -21,6 +22,7 @@ function App() {
         </main>
       </div>
       <NavSlider links={navLinks} />
+      <Modal />
     </BucketProvider>
   )
 }

@@ -1,0 +1,18 @@
+[
+  {
+    "url": "/src/assets/images/image-product-1.jpg",
+    "title": "product slide 1"
+  },
+  {
+    "url": "/src/assets/images/image-product-2.jpg",
+    "title": "product slide 2"
+  },
+  {
+    "url": "/src/assets/images/image-product-3.jpg",
+    "title": "product slide 3"
+  },
+  {
+    "url": "/src/assets/images/image-product-4.jpg",
+    "title": "product slide 4"
+  }
+]

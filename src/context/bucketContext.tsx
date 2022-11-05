@@ -1,16 +1,31 @@
 import { createContext, useContext, useReducer } from 'react'
+import slides from '../../data.json'
 
 type BucketState = {
   isOpenMenu: boolean
   isOpenCart: boolean
-  items: any
+  isOpenModal: boolean
+  imgURL: string
+  items: {
+    title: string
+    url: string
+  }[]
   amount: number
   total: number
   isLoading: boolean
 }
 
+type Actions =
+  | 'INCREMENT'
+  | 'DECREMENT'
+  | 'REMOVE_ITEM'
+  | 'TOGGLE_NAV'
+  | 'TOGGLE_CART'
+  | 'TOGGLE_MODAL'
+  | 'SET_URL'
+
 type BucketAction = {
-  type: 'INCREMENT' | 'DECREMENT' | 'REMOVE_ITEM' | 'TOGGLE_NAV' | 'TOGGLE_CART'
+  type: Actions
   payload?: any
 }
 
@@ -22,7 +37,12 @@ type BucketContextType = {
   dispatch: React.Dispatch<BucketAction>
   isOpenMenu: boolean
   isOpenCart: boolean
-  items: number
+  isOpenModal: boolean
+  imgURL: string
+  items: {
+    title: string
+    url: string
+  }[]
   amount: number
   total: number
   isLoading: boolean
@@ -33,7 +53,9 @@ export const BucketContext = createContext({} as BucketContextType)
 const initialState = {
   isOpenMenu: false,
   isOpenCart: false,
-  items: 0,
+  isOpenModal: false,
+  imgURL: slides[0].url,
+  items: slides,
   amount: 0,
   total: 0,
   isLoading: true
@@ -46,6 +68,15 @@ export const bucketReducer = (state: BucketState, action: BucketAction) => {
 
     case 'TOGGLE_CART':
       return { ...state, isOpenCart: !state.isOpenCart }
+
+    case 'TOGGLE_MODAL':
+      return {
+        ...state,
+        isOpenModal: !state.isOpenModal
+      }
+
+    case 'SET_URL':
+      return { ...state, imgURL: action.payload }
 
     case 'INCREMENT':
       return { ...state, items: action.payload }
