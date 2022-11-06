@@ -3,15 +3,15 @@ import { CloseIconLarge, NextIcon, PreviousIcon } from '../assets/icons/Icons'
 import { useBucketContext } from '../context/bucketContext'
 
 export const Modal = () => {
-  const { imgURL, isOpenModal, items, dispatch } = useBucketContext()
+  const { imgURL, isOpenModal, cartItem, dispatch } = useBucketContext()
 
   const [currentIndex, setCurrentIndex] = useState(() => {
-    return items.findIndex((el) => el.url === imgURL)
+    return cartItem.images.findIndex((el) => el.url === imgURL)
   })
 
   useEffect(() => {
     setCurrentIndex(() => {
-      return items.findIndex((el) => el.url === imgURL)
+      return cartItem.images.findIndex((el) => el.url === imgURL)
     })
   }, [imgURL])
 
@@ -19,17 +19,19 @@ export const Modal = () => {
     let btn = e.currentTarget.id
     if (btn === 'previous') {
       const isItFirstSlide = currentIndex === 0
-      const newIndex = isItFirstSlide ? items.length - 1 : currentIndex - 1
+      const newIndex = isItFirstSlide
+        ? cartItem.images.length - 1
+        : currentIndex - 1
       setCurrentIndex(newIndex)
-      let newImg = items.find((el, i) => i === newIndex)!
+      let newImg = cartItem.images.find((el: any, i) => i === newIndex)!
       dispatch({ type: 'SET_URL', payload: newImg.url })
       return
     }
     if (btn === 'next') {
-      const isLastSlide = currentIndex === items.length - 1
+      const isLastSlide = currentIndex === cartItem.images.length - 1
       const newIndex = isLastSlide ? 0 : currentIndex + 1
       setCurrentIndex(newIndex)
-      let newImg = items.find((el, i) => i === newIndex)!
+      let newImg = cartItem.images.find((el: any, i) => i === newIndex)!
       dispatch({ type: 'SET_URL', payload: newImg.url })
       return
     }
@@ -70,14 +72,14 @@ export const Modal = () => {
                     </button>
                   </div>
                   <img
-                    src={items[currentIndex].url}
+                    src={cartItem.images[currentIndex].url}
                     alt='product'
                     width={600}
                     className='rounded-2xl'
                   />
                 </div>
                 <figcaption className='mt-5 flex justify-evenly'>
-                  {items.map((el, i) => (
+                  {cartItem.images.map((el: any, i) => (
                     <button
                       datatype='ring-orange'
                       className='rounded-2xl focus:outline-none focus:ring-4 focus:ring-orange'

@@ -1,7 +1,6 @@
 import { CartIcon, MinusIcon, PlusIcon } from '../assets/icons/Icons'
 import Carousel from './Carousel'
 import { useBucketContext } from '../context/bucketContext'
-import { useState } from 'react'
 
 const Product = () => {
   const { dispatch, cartItem, imgURL, amount } = useBucketContext()
@@ -21,7 +20,7 @@ const Product = () => {
             />
           </button>
           <figcaption className='flex justify-between'>
-            {cartItem.images.map((el, i) => (
+            {cartItem.images.map((el: any, i) => (
               <button
                 datatype='ring-orange'
                 className='rounded-2xl focus:outline-none focus:ring-4 focus:ring-orange'
@@ -72,6 +71,7 @@ const Product = () => {
         <div className='mt-8 flex flex-col gap-3 lg:mt-16 lg:flex-row'>
           <div className='flex w-full items-center justify-between rounded-md bg-lightGrayish p-3 text-orange  lg:w-[160px]'>
             <button
+              className='disabled:cursor-not-allowed'
               disabled={amount === 0}
               aria-label='Decrease amount'
               onClick={() => dispatch({ type: 'DECREMENT' })}
@@ -85,6 +85,7 @@ const Product = () => {
               {amount < 0 ? 0 : amount}
             </span>
             <button
+              className='disabled:cursor-not-allowed'
               disabled={amount === 0}
               aria-label='Increase amount'
               onClick={() => dispatch({ type: 'INCREMENT' })}

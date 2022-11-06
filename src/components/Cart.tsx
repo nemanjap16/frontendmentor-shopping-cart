@@ -58,7 +58,7 @@ const Cart = () => {
               </div>
             </div>
           ) : (
-            <div className='flex h-[150px] w-[360px] items-center justify-center'>
+            <div className='flex h-[150px] w-[330px] items-center justify-center'>
               <h5 className='font-bold text-darkGrayishBlue'>
                 Your cart is empty!
               </h5>

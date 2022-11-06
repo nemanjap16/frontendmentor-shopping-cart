@@ -6,22 +6,22 @@
   "images": [
     {
       "id": 1,
-      "url": "/src/assets/images/image-product-1.jpg",
+      "url": "/images/image-product-1.jpg",
       "title": "product slide 1"
     },
     {
       "id": 2,
-      "url": "/src/assets/images/image-product-2.jpg",
+      "url": "/images/image-product-2.jpg",
       "title": "product slide 2"
     },
     {
       "id": 3,
-      "url": "/src/assets/images/image-product-3.jpg",
+      "url": "/images/image-product-3.jpg",
       "title": "product slide 3"
     },
     {
       "id": 4,
-      "url": "/src/assets/images/image-product-4.jpg",
+      "url": "/images/image-product-4.jpg",
       "title": "product slide 4"
     }
   ]

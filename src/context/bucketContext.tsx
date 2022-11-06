@@ -73,7 +73,7 @@ const initialState = {
   cartItem: product,
   imgURL: product.images[0].url,
   items: product.images,
-  amount: 1,
+  amount: 0,
   total: 0
 }
 
@@ -95,10 +95,10 @@ export const bucketReducer = (state: BucketState, action: BucketAction) => {
       return { ...state, imgURL: action.payload }
 
     case 'INCREMENT':
-      return { ...state, amount: state.amount++ }
+      return { ...state, amount: state.amount + 1 }
 
     case 'DECREMENT':
-      return { ...state, amount: state.amount-- }
+      return { ...state, amount: state.amount - 1 }
 
     case 'REMOVE_ITEM':
       return { ...state, amount: 0 }
