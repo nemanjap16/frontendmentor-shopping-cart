@@ -9,7 +9,7 @@
     position: relative;
   }
 
-  button:focus > img {
+  button[data-type='ring-orange']:focus > img {
     @apply opacity-50;
   }
 }
@@ -17,7 +17,7 @@
   .link-style {
     @apply cursor-pointer border-b-4 border-solid border-transparent py-7 capitalize text-darkGrayishBlue transition   duration-300 ease-in-out hover:border-b-4 hover:border-orange hover:text-veryDarkBlue;
   }
-  .btn-add {
+  .btn-primary {
     @apply flex w-full items-center justify-center gap-5 rounded-md bg-orange p-3 font-bold text-lightGrayish outline-none hover:opacity-90 hover:shadow-xl focus:ring-4 focus:ring-amber-700 lg:w-[300px];
   }
 }

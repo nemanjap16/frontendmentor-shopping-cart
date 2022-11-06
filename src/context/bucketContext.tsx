@@ -1,18 +1,25 @@
 import { createContext, useContext, useReducer } from 'react'
-import slides from '../../data.json'
+import product from '../../data.json'
 
 type BucketState = {
   isOpenMenu: boolean
   isOpenCart: boolean
   isOpenModal: boolean
+  isLoading: boolean
+  cartItem: {
+    id: number
+    name: string
+    description: string
+    price: number
+    images: {
+      id: number
+      url: string
+      title: string
+    }[]
+  }
   imgURL: string
-  items: {
-    title: string
-    url: string
-  }[]
   amount: number
   total: number
-  isLoading: boolean
 }
 
 type Actions =
@@ -23,6 +30,7 @@ type Actions =
   | 'TOGGLE_CART'
   | 'TOGGLE_MODAL'
   | 'SET_URL'
+  | 'ADD_ITEM'
 
 type BucketAction = {
   type: Actions
@@ -38,14 +46,21 @@ type BucketContextType = {
   isOpenMenu: boolean
   isOpenCart: boolean
   isOpenModal: boolean
+  isLoading: boolean
+  cartItem: {
+    id: number
+    name: string
+    description: string
+    price: number
+    images: {
+      id: number
+      url: string
+      title: string
+    }[]
+  }
   imgURL: string
-  items: {
-    title: string
-    url: string
-  }[]
   amount: number
   total: number
-  isLoading: boolean
 }
 
 export const BucketContext = createContext({} as BucketContextType)
@@ -54,11 +69,12 @@ const initialState = {
   isOpenMenu: false,
   isOpenCart: false,
   isOpenModal: false,
-  imgURL: slides[0].url,
-  items: slides,
-  amount: 0,
-  total: 0,
-  isLoading: true
+  isLoading: true,
+  cartItem: product,
+  imgURL: product.images[0].url,
+  items: product.images,
+  amount: 1,
+  total: 0
 }
 
 export const bucketReducer = (state: BucketState, action: BucketAction) => {
@@ -79,13 +95,16 @@ export const bucketReducer = (state: BucketState, action: BucketAction) => {
       return { ...state, imgURL: action.payload }
 
     case 'INCREMENT':
-      return { ...state, items: action.payload }
+      return { ...state, amount: state.amount++ }
 
     case 'DECREMENT':
-      return { ...state, items: action.payload }
+      return { ...state, amount: state.amount-- }
 
     case 'REMOVE_ITEM':
-      return { ...state, items: action.payload }
+      return { ...state, amount: 0 }
+
+    case 'ADD_ITEM':
+      return { ...state, amount: 1 }
 
     default:
       return state

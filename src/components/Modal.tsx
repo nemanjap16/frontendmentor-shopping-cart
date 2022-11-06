@@ -21,12 +21,16 @@ export const Modal = () => {
       const isItFirstSlide = currentIndex === 0
       const newIndex = isItFirstSlide ? items.length - 1 : currentIndex - 1
       setCurrentIndex(newIndex)
+      let newImg = items.find((el, i) => i === newIndex)!
+      dispatch({ type: 'SET_URL', payload: newImg.url })
       return
     }
     if (btn === 'next') {
       const isLastSlide = currentIndex === items.length - 1
       const newIndex = isLastSlide ? 0 : currentIndex + 1
       setCurrentIndex(newIndex)
+      let newImg = items.find((el, i) => i === newIndex)!
+      dispatch({ type: 'SET_URL', payload: newImg.url })
       return
     }
   }
@@ -75,6 +79,7 @@ export const Modal = () => {
                 <figcaption className='mt-5 flex justify-evenly'>
                   {items.map((el, i) => (
                     <button
+                      datatype='ring-orange'
                       className='rounded-2xl focus:outline-none focus:ring-4 focus:ring-orange'
                       aria-label='Select product'
                       key={el.title}

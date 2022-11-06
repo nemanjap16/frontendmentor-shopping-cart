@@ -9,7 +9,7 @@ const Links = ({ children }: linksProps) => {
     <ul className='flex gap-6' aria-label='Menu list'>
       {children.map((item) => (
         <li key={item.id} className='link-style'>
-          {item.name}
+          <a href={`#${item.name}`}>{item.name}</a>
         </li>
       ))}
     </ul>

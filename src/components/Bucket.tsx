@@ -4,7 +4,7 @@ import { useBucketContext } from '../context/bucketContext'
 import Cart from './Cart'
 
 const Bucket = () => {
-  const { dispatch } = useBucketContext()
+  const { dispatch, amount } = useBucketContext()
   return (
     <div className='relative'>
       <div className='flex items-center gap-4 sm:gap-10'>
@@ -13,7 +13,14 @@ const Bucket = () => {
           aria-label='Display shopping cart'
           className='cursor-pointer'
         >
-          <BucketIcon />
+          <div className='relative'>
+            {amount > 0 && (
+              <span className='absolute -top-4 left-3 grid  h-6 w-8 place-content-center rounded-full bg-orange text-xs font-bold text-lightGrayish'>
+                {amount}
+              </span>
+            )}
+            <BucketIcon />
+          </div>
         </button>
         <div className='rounded-full border-4 border-transparent transition duration-300 ease-in-out hover:border-orange'>
           <img
