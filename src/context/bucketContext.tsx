@@ -1,22 +1,13 @@
 import { createContext, useContext, useReducer } from 'react'
 import product from '../../data.json'
+import { CartItem } from '../types/Types'
 
 type BucketState = {
   isOpenMenu: boolean
   isOpenCart: boolean
   isOpenModal: boolean
   isLoading: boolean
-  cartItem: {
-    id: number
-    name: string
-    description: string
-    price: number
-    images: {
-      id: number
-      url: string
-      title: string
-    }[]
-  }
+  cartItem: CartItem
   imgURL: string
   amount: number
   total: number
@@ -47,17 +38,7 @@ type BucketContextType = {
   isOpenCart: boolean
   isOpenModal: boolean
   isLoading: boolean
-  cartItem: {
-    id: number
-    name: string
-    description: string
-    price: number
-    images: {
-      id: number
-      url: string
-      title: string
-    }[]
-  }
+  cartItem: CartItem
   imgURL: string
   amount: number
   total: number

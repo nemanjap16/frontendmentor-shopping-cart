@@ -1,11 +1,9 @@
 import React, { useState } from 'react'
 import { NextIcon, PreviousIcon } from '../assets/icons/Icons'
+import { Slides } from '../types/Types'
 
 type typeSlides = {
-  slides: {
-    url: string
-    title: string
-  }[]
+  slides: Slides
   width: string
 }
 
