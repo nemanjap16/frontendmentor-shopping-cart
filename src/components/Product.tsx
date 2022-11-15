@@ -72,7 +72,7 @@ const Product = () => {
           <div className='flex w-full items-center justify-between rounded-md bg-lightGrayish p-3 text-orange  lg:w-[160px]'>
             <button
               className='disabled:cursor-not-allowed'
-              disabled={amount === 0}
+              // disabled={amount === 0}
               aria-label='Decrease amount'
               onClick={() => dispatch({ type: 'DECREMENT' })}
             >
@@ -86,7 +86,7 @@ const Product = () => {
             </span>
             <button
               className='disabled:cursor-not-allowed'
-              disabled={amount === 0}
+              // disabled={amount === 0}
               aria-label='Increase amount'
               onClick={() => dispatch({ type: 'INCREMENT' })}
             >

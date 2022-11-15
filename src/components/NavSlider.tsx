@@ -1,3 +1,4 @@
+import { useRef } from 'react'
 import { CloseIcon } from '../assets/icons/Icons'
 import { useBucketContext } from '../context/bucketContext'
 import { NavLinks } from '../types/Types'
@@ -8,15 +9,22 @@ type propLinks = {
 
 const NavSlider = ({ links }: propLinks) => {
   const { dispatch, isOpenMenu } = useBucketContext()
+  const nav = useRef<HTMLDivElement>(null)
+  const toggle = () => {
+    nav.current?.classList.toggle('-translate-x-full')
+  }
 
   return (
     <>
       {isOpenMenu && (
         <div className='absolute inset-0 z-50 bg-lightbox'>
-          <nav className='h-full w-3/5 origin-left animate-nav bg-white p-5 text-veryDarkBlue'>
+          <nav
+            ref={nav}
+            className='h-full w-3/5 origin-left bg-white p-5 text-veryDarkBlue'
+          >
             <button
               aria-label='Close mobile menu'
-              onClick={() => dispatch({ type: 'TOGGLE_NAV' })}
+              onClick={() => [dispatch({ type: 'TOGGLE_NAV' }), toggle()]}
             >
               <CloseIcon />
             </button>
